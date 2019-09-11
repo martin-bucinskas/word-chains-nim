@@ -44,8 +44,8 @@ proc findEndOfChain(starting: string, ending: string, list: seq[string]): bool =
     if stack.find(starting) == -1:
         stack.add(starting)
 
-    # if len(stack) > 100:
-    #     return false
+    if len(stack) > 6:
+        return false
 
     if starting == ending:
         return true
@@ -101,15 +101,16 @@ proc main(): void =
             var result = findChain(seperated[0], seperated[1])
     
             var counter = 0
-            setRandomColour()
+            # setRandomColour()
+            stdout.write(len(result), " ")
             stdout.write(seperated[0])
-            stdout.write("->")
+            stdout.write(",")
             resetAttributes()
             for word in result:
-                setRandomColour()
+                # setRandomColour()
                 stdout.write(word)
                 if counter < result.len - 1:
-                    stdout.write("->")
+                    stdout.write(",")
                 resetAttributes()
                 counter = counter + 1
     
